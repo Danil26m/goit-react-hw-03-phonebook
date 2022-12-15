@@ -34,7 +34,10 @@ addTar=(even)=>{
   }
   componentDidMount(){
     const locale = JSON.parse( localStorage.getItem('contacts'));
-    this.setState({contacts: locale})
+    if (locale) {
+      this.setState({contacts: locale});
+    }
+    
     
   }
   componentDidUpdate(prevProps, prevState){
