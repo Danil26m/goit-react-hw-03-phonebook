@@ -32,7 +32,16 @@ addTar=(even)=>{
             }))
     }
   }
-
+  componentDidMount(){
+    const locale = JSON.parse( localStorage.getItem('contacts'));
+    this.setState({contacts: locale})
+    
+  }
+  componentDidUpdate(prevProps, prevState){
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
   render(){
     const filteredContacts = this.filtered();
     return (
